@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0px;
+	font-family: arial;
+}
+
+h1 {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.site-logo {
+	margin: 10px 50px 10px 50px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+}
+
+.nav-header {
+	display: flex;
+	background: linear-gradient(#ffffff, #eeeeee);
+	box-shadow: 0px 10px 10px #dddddd;
+}
+
+.nav-bar {
+	margin: auto 25px auto 25px;
+}
+
+.nav-item {
+	color: #808080;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.75vw;
+	margin: auto 4vw;
+	vertical-align: middle;
+	border: 1px solid transparent;
+
+}
