@@ -57,14 +57,14 @@ h1 {
 .site-logo {
 	--site-logo-height: 70px;
 	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--site-logo-height)) / 2);
-	margin: var(--vertical-margin) 2vw var(--vertical-margin) 2vw;
+	margin: var(--vertical-margin) 2vw;
 	height: var(--site-logo-height);
 	width: var(--site-logo-height); /* icon is square */
 }
 
 .linkedin-logo {
-	--linkedin-logo-height: 40px;
-	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--linkedin-logo-height)) / 2);
+	--linkedin-logo-height: 30px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--linkedin-logo-height)) / 2);	
 	margin: var(--vertical-margin) 3vw var(--vertical-margin) 1.5vw;
 	height: var(--linkedin-logo-height);
 	width: var(--linkedin-logo-height); /* icon is square */
@@ -72,9 +72,9 @@ h1 {
 }
 
 .email-logo {
-	--email-logo-height: 40px;
+	--email-logo-height: 30px;
 	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--email-logo-height)) / 2);
-	margin: var(--vertical-margin) 1.5vw var(--vertical-margin) 1.5vw;
+	margin: var(--vertical-margin) 1.5vw;
 	height: var(--email-logo-height);
 	width: calc(var(--email-logo-height) * 1.35); /* to keep the icon's relative dimentions */
 	float: right;
@@ -89,17 +89,20 @@ h1 {
 }
 
 .nav-bar {
+	--nav-item-font-size: 22px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--nav-item-font-size)) / 2);
+	margin: var(--vertical-margin) auto;
 	display: inline-block;
 	position: absolute;
-	top: 35%;
 }
 
 .nav-item {
+	/* --nav-item-font-size inherited from nav-bar */
+	margin: auto 2vw;
 	color: var(--color-scheme-blue);
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 1.75vw;
-	margin: auto 2vw;
+	font-size: var(--nav-item-font-size);
 	vertical-align: middle;
 	border: 1px solid transparent;
 
@@ -119,6 +122,31 @@ h1 {
 #nav-accent {
 	height: 3px;
 	background-image: linear-gradient(to right, var(--color-scheme-blue) , var(--color-scheme-orange));
+}
+
+.sliced-div-container {
+	--sliced-div-container-height: 70px;
+	--accent-color-height:  3px;
+	height: var(--sliced-div-container-height);
+	width: 50%;
+	/* The clip-path attribute gives the div the 'sliced-off' tail */
+	clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+	float: left;
+	background-color: var(--color-scheme-gray);
+}
+
+.sliced-div-container h1 {
+	/* Selects all <h1> elements inside 'angled-dive-container' class elements */
+	--font-size: 30px;
+	--vertical-margin: calc(calc(var(--sliced-div-container-height) - var(--font-size)) / 2);
+	margin: var(--vertical-margin) auto;
+	font-size: var(--font-size);
+	height: calc(var(--font-size) - var(--accent-color-height));
+}
+
+.sliced-div-container-accent {
+	height: var(--accent-color-height);
+	background-image: linear-gradient(to right, var(--color-scheme-gray) , var(--color-scheme-blue));
 }
 
 @keyframes nav-fade {
