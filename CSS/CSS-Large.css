@@ -1,49 +1,112 @@
+/*
+Color Pallete:
+
+Color Theme Swatches in Hex
+.Web-Portfolio-1-hex { color: #333333; } // Gray
+.Web-Portfolio-2-hex { color: #FF6600; } // Orange
+.Web-Portfolio-3-hex { color: #202020; } // Dark Gray
+.Web-Portfolio-4-hex { color: #0066FF; } // Blue
+.Web-Portfolio-5-hex { color: #EEEEEE; } // White
+
+Color Theme Swatches in RGBA
+.Web-Portfolio-1-rgba { color: rgba(51, 51, 51, 1); }
+.Web-Portfolio-2-rgba { color: rgba(255, 102, 0, 1); }
+.Web-Portfolio-3-rgba { color: rgba(32, 32, 32, 1); }
+.Web-Portfolio-4-rgba { color: rgba(0, 102, 255, 1); }
+.Web-Portfolio-5-rgba { color: rgba(238, 238, 238, 1); }
+
+Color Theme Swatches in HSLA
+.Web-Portfolio-1-hsla { color: hsla(0, 0, 20, 1); }
+.Web-Portfolio-2-hsla { color: hsla(24, 100, 50, 1); }
+.Web-Portfolio-3-hsla { color: hsla(0, 0, 12, 1); }
+.Web-Portfolio-4-hsla { color: hsla(216, 100, 50, 1); }
+.Web-Portfolio-5-hsla { color: hsla(0, 0, 93, 1); }
+*/
+
 * {
 	box-sizing: border-box;
 }
 body {
-	padding-top: 120px;
+	padding-top: 100px;
 	min-height: 100vh;
 	margin: 0px;
-	font-family: arial;
-	background: linear-gradient(to left bottom, #55ccff, #007acc);
-/*	background-image: url("https://wallpapercave.com/wp/M1vMwjz.jpg");*/
+	font-family: Trebuchet MS;
+	color: #EEEEEE;
+	background-color: #202020;
 }
 
 h1 {
 	text-align: center;
-	text-decoration: underline;
 }
 
 .site-logo {
-	margin: 10px 50px 10px 50px;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
+	margin: 10px 2vw 10px 2vw; /* top/bottom margin = nav header height - icon height / 2 */
+	height: 80px;
+	width: 80px;
+}
+
+.linkedin-logo {
+	margin: 30px 3vw 30px 1.5vw; /* top/bottom margin = nav header height - icon height / 2 */
+	height: 40px;
+	width: 40px;
+	float: right;
+}
+
+.email-logo {
+	margin: 30px 1.5vw 30px 1.5vw; /* top/bottom margin = nav header height - icon height / 2 */
+	height: 40px;
+	width: 54px;
+	float: right;
 }
 
 .nav-header {
-	display: flex;
-	height: 120px;
+	display: inline-block; 
+	height: 100px; /* Nav Header Height = 100px */
 	width: 100%;
 	top: 0px;
 	position: fixed;
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(200, 200, 200, 0.3));
-	z-index: 3;
-	backdrop-filter: blur(4px);
+	align-items: center;
+	background-color: #333333;
 }
 
 .nav-bar {
-	margin: auto 25px auto 25px;
+	display: inline-block;
+	position: absolute;
+	top: 35%;
 }
 
 .nav-item {
-	color: #000000;
+	color: #0066FF;
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 1.75vw;
-	margin: auto 4vw;
+	margin: auto 2vw;
 	vertical-align: middle;
 	border: 1px solid transparent;
 
+}
+
+.not-current-page:hover {
+    /*this is so that when the user hovers over the navigation links they will fade to orange color*/
+    
+    animation-name: nav-fade;
+    /*refer to @keyframes at the bottom of this file*/
+    
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    /*this is so that the animation pauses on the last frame*/
+}
+
+#nav-accent {
+	height: 5px;
+	background-image: linear-gradient(to right, #0066FF , #FF6600);
+}
+
+@keyframes nav-fade {
+    from {
+        color: #0066FF;
+    }
+    to {
+        color: #FF6600;
+    }
 }
