@@ -23,16 +23,31 @@ Color Theme Swatches in HSLA
 .Web-Portfolio-5-hsla { color: hsla(0, 0, 93, 1); }
 */
 
+
+/* We can also create user-defined variables to store custome values to be used through out this CSS document */
+/* Defining a variable: '--variable-name:  value;' */
+/* Recalling a variable: 'var(--variable-name);' */
+/* We cna also calculate math expersions using the calc() function; just make sure to surround any operands with whitespace */
+:root {
+  --color-scheme-gray: #333333;
+  --color-scheme-dark-gray: #202020;
+  --color-scheme-white: #EEEEEE;
+  --color-scheme-blue: #0066FF;
+  --color-scheme-orange: #FF6600;
+  --navbar-header-height: 80px;
+}
+
+
 * {
 	box-sizing: border-box;
 }
 body {
-	padding-top: 100px;
+	padding-top: var(--navbar-header-height);
 	min-height: 100vh;
 	margin: 0px;
 	font-family: Trebuchet MS;
-	color: #EEEEEE;
-	background-color: #202020;
+	color: var(--color-scheme-white);
+	background-color: var(--color-scheme-dark-gray);
 }
 
 h1 {
@@ -40,47 +55,54 @@ h1 {
 }
 
 .site-logo {
-	margin: 10px 2vw 10px 2vw; /* top/bottom margin = nav header height - icon height / 2 */
-	height: 80px;
-	width: 80px;
+	--site-logo-height: 70px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--site-logo-height)) / 2);
+	margin: var(--vertical-margin) 2vw;
+	height: var(--site-logo-height);
+	width: var(--site-logo-height); /* icon is square */
 }
 
 .linkedin-logo {
-	margin: 30px 3vw 30px 1.5vw; /* top/bottom margin = nav header height - icon height / 2 */
-	height: 40px;
-	width: 40px;
+	--linkedin-logo-height: 30px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--linkedin-logo-height)) / 2);	
+	margin: var(--vertical-margin) 3vw var(--vertical-margin) 1.5vw;
+	height: var(--linkedin-logo-height);
+	width: var(--linkedin-logo-height); /* icon is square */
 	float: right;
 }
 
 .email-logo {
-	margin: 30px 1.5vw 30px 1.5vw; /* top/bottom margin = nav header height - icon height / 2 */
-	height: 40px;
-	width: 54px;
+	--email-logo-height: 30px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--email-logo-height)) / 2);
+	margin: var(--vertical-margin) 1.5vw;
+	height: var(--email-logo-height);
+	width: calc(var(--email-logo-height) * 1.35); /* to keep the icon's relative dimentions */
 	float: right;
 }
 
-.nav-header {
-	display: inline-block; 
-	height: 100px; /* Nav Header Height = 100px */
+.nav-header { 
+	height: var(--navbar-header-height);
 	width: 100%;
 	top: 0px;
 	position: fixed;
-	align-items: center;
-	background-color: #333333;
+	background-color: var(--color-scheme-gray);
 }
 
 .nav-bar {
+	--nav-item-font-size: 22px;
+	--vertical-margin: calc(calc(var(--navbar-header-height) - var(--nav-item-font-size)) / 2);
+	margin: var(--vertical-margin) auto;
 	display: inline-block;
 	position: absolute;
-	top: 35%;
 }
 
 .nav-item {
-	color: #0066FF;
+	/* --nav-item-font-size inherited from nav-bar */
+	margin: auto 2vw;
+	color: var(--color-scheme-blue);
 	text-decoration: none;
 	font-weight: bold;
-	font-size: 1.75vw;
-	margin: auto 2vw;
+	font-size: var(--nav-item-font-size);
 	vertical-align: middle;
 	border: 1px solid transparent;
 
@@ -98,15 +120,40 @@ h1 {
 }
 
 #nav-accent {
-	height: 5px;
-	background-image: linear-gradient(to right, #0066FF , #FF6600);
+	height: 3px;
+	background-image: linear-gradient(to right, var(--color-scheme-blue) , var(--color-scheme-orange));
+}
+
+.sliced-div-container {
+	--sliced-div-container-height: 70px;
+	--accent-color-height:  3px;
+	height: var(--sliced-div-container-height);
+	width: 50%;
+	/* The clip-path attribute gives the div the 'sliced-off' tail */
+	clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+	float: left;
+	background-color: var(--color-scheme-gray);
+}
+
+.sliced-div-container h1 {
+	/* Selects all <h1> elements inside 'angled-dive-container' class elements */
+	--font-size: 30px;
+	--vertical-margin: calc(calc(var(--sliced-div-container-height) - var(--font-size)) / 2);
+	margin: var(--vertical-margin) auto;
+	font-size: var(--font-size);
+	height: calc(var(--font-size) - var(--accent-color-height));
+}
+
+.sliced-div-container-accent {
+	height: var(--accent-color-height);
+	background-image: linear-gradient(to right, var(--color-scheme-gray) , var(--color-scheme-blue));
 }
 
 @keyframes nav-fade {
     from {
-        color: #0066FF;
+        color: var(--color-scheme-blue);
     }
     to {
-        color: #FF6600;
+        color: var(--color-scheme-orange);
     }
 }
